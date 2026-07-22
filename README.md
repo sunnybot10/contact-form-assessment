@@ -12,8 +12,8 @@
 ### 1. Clone the repository
 
 ```bash
-git clone 
-cd contact-form
+git clone https://github.com/sunnybot10/contact-form-assessment.git
+cd contact-form-assessment
 ```
 
 ### 2. Install Composer dependencies
