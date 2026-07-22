@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 namespace App;
-
 use PDO;
 
 class ContactRepository
@@ -18,7 +17,7 @@ class ContactRepository
             (name, email, phone, message)
             VALUES
             (:name, :email, :phone, :message)
-        SQL;
+            SQL;
 
         $statement = $this->pdo->prepare($sql);
 
@@ -32,7 +31,18 @@ class ContactRepository
 
     public function all(): array
     {
-        $statement = $this->pdo->query("SELECT * FROM contacts ORDER BY created_at DESC");
+        $sql = <<<SQL
+        SELECT
+            id,
+            name,
+            email,
+            phone,
+            message,
+            created_at
+        FROM contacts
+        ORDER BY created_at DESC
+        SQL;
+        $statement = $this->pdo->query($sql);
         return $statement->fetchAll();
     }
 }
